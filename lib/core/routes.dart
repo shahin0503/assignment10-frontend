@@ -1,5 +1,6 @@
 import 'package:assignment10/presentation/screens/auth/login_screen.dart';
 import 'package:assignment10/presentation/screens/auth/providers/login_provider.dart';
+import 'package:assignment10/presentation/screens/auth/providers/signup_provider.dart';
 import 'package:assignment10/presentation/screens/auth/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,9 @@ class Routes {
         );
       case SignUpScreen.routeName:
         return CupertinoPageRoute(
-          builder: (context) => const SignUpScreen(),
+          builder: (context) => ChangeNotifierProvider(
+              create: (BuildContext context) => SignupProvider(context),
+              child: const SignUpScreen()),
         );
 
       default:
