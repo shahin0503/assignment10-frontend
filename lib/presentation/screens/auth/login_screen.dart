@@ -3,7 +3,7 @@ import 'package:assignment10/logic/cubits/user_cubit/user_cubit.dart';
 import 'package:assignment10/logic/cubits/user_cubit/user_state.dart';
 import 'package:assignment10/presentation/screens/auth/providers/login_provider.dart';
 import 'package:assignment10/presentation/screens/auth/signup_screen.dart';
-import 'package:assignment10/presentation/screens/home/home_screen.dart';
+import 'package:assignment10/presentation/screens/splash/splash_screen.dart';
 import 'package:assignment10/presentation/widgets/gap_widget.dart';
 import 'package:assignment10/presentation/widgets/link_button.dart';
 import 'package:assignment10/presentation/widgets/primary_button.dart';
@@ -29,8 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) {
         if (state is UserLoggedInState) {
-          Navigator.popUntil(context, (route) => route.isFirst);
-          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+          Navigator.pushReplacementNamed(context, SplashScreen.routeName);
         }
       },
       child: Scaffold(

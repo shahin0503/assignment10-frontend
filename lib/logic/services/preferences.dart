@@ -20,4 +20,9 @@ class Preferences {
       'password': password,
     };
   }
+
+  static Future<void> clear() async {
+    SharedPreferences instance = await SharedPreferences.getInstance();
+    await instance.clear();
+  }
 }

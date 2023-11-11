@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:assignment10/core/routes.dart';
 import 'package:assignment10/core/ui.dart';
 import 'package:assignment10/logic/cubits/user_cubit/user_cubit.dart';
-import 'package:assignment10/presentation/screens/auth/login_screen.dart';
+import 'package:assignment10/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         theme: Themes.defaultTheme,
         debugShowCheckedModeBanner: false,
         onGenerateRoute: Routes.onGenerateRoute,
-        initialRoute: LoginScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }
