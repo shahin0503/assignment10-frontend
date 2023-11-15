@@ -1,10 +1,13 @@
 import 'package:assignment10/core/ui.dart';
 import 'package:assignment10/data/models/product/product_model.dart';
+import 'package:assignment10/logic/cubits/cart_cubit/cart_cubit.dart';
+import 'package:assignment10/logic/cubits/cart_cubit/cart_state.dart';
 import 'package:assignment10/logic/services/formatter.dart';
 import 'package:assignment10/presentation/widgets/gap_widget.dart';
 import 'package:assignment10/presentation/widgets/primary_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -57,9 +60,26 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   const GapWidget(
                     size: 10,
                   ),
-                  PrimaryButton(
-                    onPressed: (){},
-                    text: 'Add to cart',),
+                  BlocBuilder<CartCubit, CartState>(
+                    builder: (context, state) {
+                      bool isInCart = BlocProvider.of<CartCubit>(context)
+                          .cartContains(widget.productModel);
+                      return PrimaryButton(
+                        onPressed: () {
+                          if (isInCart) {
+                            return;
+                          }
+                          BlocProvider.of<CartCubit>(context)
+                              .addToCart(widget.productModel, 1);
+                        },
+                        color:
+                            (isInCart) ? AppColors.textLight : AppColors.accent,
+                        text: (isInCart)
+                            ? 'Product added to cart'
+                            : 'Add to cart',
+                      );
+                    },
+                  ),
                   const GapWidget(
                     size: 10,
                   ),

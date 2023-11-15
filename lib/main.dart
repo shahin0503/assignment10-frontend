@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:assignment10/core/routes.dart';
 import 'package:assignment10/core/ui.dart';
+import 'package:assignment10/logic/cubits/cart_cubit/cart_cubit.dart';
 import 'package:assignment10/logic/cubits/category_cubit/category_cubit.dart';
 import 'package:assignment10/logic/cubits/product_cubit/product_cubit.dart';
 import 'package:assignment10/logic/cubits/user_cubit/user_cubit.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ProductCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(BlocProvider.of(context)),
         )
       ],
       child: MaterialApp(
