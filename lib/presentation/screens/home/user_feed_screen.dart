@@ -34,7 +34,6 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
         return ListView.builder(
           itemCount: state.products.length,
           itemBuilder: (context, index) {
-            
             final product = state.products[index];
 
             return CupertinoButton(
@@ -80,7 +79,6 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                       ],
                     ),
                   ),
-                  IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.cart))
                 ],
               ),
             );

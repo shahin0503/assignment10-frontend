@@ -37,6 +37,10 @@ class _CartScreenState extends State<CartScreen> {
               return Center(
                 child: Text(state.message),
               );
+            } else if (state is CartLoadedState && state.items.isEmpty) {
+              return const Center(
+                child: Text('Cart items will show up here'),
+              );
             }
 
             return Column(
