@@ -5,12 +5,17 @@ class PrimaryTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final String? Function(String?)? validator;
+  final String? initialValue;
+  final Function(String)? onChanged;
+
   const PrimaryTextField({
     super.key,
     required this.labelText,
     this.controller,
     this.obscureText = false,
     this.validator,
+    this.initialValue,
+    this.onChanged,
   });
 
   @override
@@ -18,6 +23,8 @@ class PrimaryTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: validator,
+      initialValue: initialValue,
+      onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7),
